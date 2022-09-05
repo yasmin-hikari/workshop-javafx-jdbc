@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -13,8 +13,12 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml")); /*Instanciar um obj Loader para manipular a tela antes de carregar*/
-			Parent parent = loader.load(); /*carrega a view*/
-			Scene mainScene = new Scene(parent); /*cria a scene*/
+			ScrollPane scrollPane = loader.load(); /*carrega a view*/
+			
+			scrollPane.setFitToHeight(true);
+			scrollPane.setFitToWidth(true);			
+			
+			Scene mainScene = new Scene(scrollPane); /*cria a scene*/
 			primaryStage.setScene(mainScene); /*cita a mainScene no Stage*/
 			primaryStage.setTitle("Sample JavaFX application");
 			primaryStage.show();
